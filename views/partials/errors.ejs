@@ -1,0 +1,8 @@
+<% if (locals.errors) { %>
+    <ul>
+        <% for( let i = 0; i < errors.length; i++ ) { %>
+            <%console.log('-errors[i].msg:', errors[i])%>
+            <li><%-errors[i].msg%></li>
+        <% } %>
+    </ul>
+<% } %>
