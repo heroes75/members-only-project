@@ -1,0 +1,19 @@
+<div class="message-container">
+    <span class="username"> fullname: <%= locals.currentUser?.member ? messageInfo.firstname+ ' ' + messageInfo.lastname : `anonymous`  %></span> <%- locals.currentUser ? (messageInfo.member ? "<span id='member'>Member</span>" : "") : "" %> <%- locals.currentUser ? (messageInfo.admin ? "<span>Admin</span>" : "") : "" %>
+    <div class="title">Title: <%= messageInfo.title %></div>
+    <div class="text"><%= messageInfo.message %></div>
+    <div class="added">added the:
+         <% if (locals.currentUser?.member) { %>
+            <%- messageInfo.added %>
+        <% } else { %>
+            <% if (locals.currentUser) { %>
+                <a href="/join">unavailable</a>
+            <% } else { %>
+                <a href="/login">unavailable</a>
+            <% } %>
+         <% } %>
+    </div>
+    <% if (locals.currentUser?.admin) { %>
+        <form action="/create/<%= messageInfo.messageid %>/delete" method="post"> <button onclick="confirm('do you want really delete this message ?')" type="submit">Delete This message</button></form>
+    <% } %>
+</div

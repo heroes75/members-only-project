@@ -6,6 +6,7 @@
     <title>Create new user</title>
 </head>
 <body>
+    <%- include('partials/header') %>
     <h1>SIGN UP </h1>
     <%- include('partials/errors', {errors: locals.errors}) %>
     <form action="/signup" method="post">

@@ -23,7 +23,6 @@ const strategy = new localStrategy(verifyCallback);
 passport.use(strategy)
 
 passport.serializeUser((user, done) => {
-    console.log('user SERI:', user)
     return done(null, user.id)
 })
 
@@ -31,6 +30,5 @@ passport.deserializeUser( async (userId, done) => {
     const rows = await getUserById(+userId)
     const user = rows[0]
 
-    console.log('user: in deserial', user)
     return done(null, user)
 })

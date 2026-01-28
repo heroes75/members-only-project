@@ -6,11 +6,21 @@
     <title>Home</title>
 </head>
 <body>
+<%- include('partials/header') %>
 <% if (locals.currentUser) { %>
     <h3>Welcome <%= currentUser.firstname + " " + currentUser.lastname %></h3>
-    <a href="/logout">logout</a>
 <% } else { %>
     Welcome
 <%} %>
+    <div class="messages-container">
+        <% if (locals.messages.length === 0) { %>
+            <h3>No message added yet</h3>
+        <% } else {%>
+            <% locals.messages.forEach(messageInfo => { %>
+                <%- include('partials/message', {messageInfo: messageInfo}) %>
+            <% }) %>
+        <%} %> 
+        
+    </div>
 </body>
 </html>

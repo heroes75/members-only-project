@@ -1,5 +1,5 @@
 const { matchedData, validationResult, body } = require('express-validator')
-const { createUser } = require('../config/db/queries')
+const { createUser, getUserByUsername } = require('../config/db/queries')
 const bcrypt = require('bcryptjs')
 
 
@@ -15,7 +15,15 @@ const signUpConstraint = [
     body('username')
         .trim()
         .notEmpty().withMessage('username is not empty')
-        .isAlphanumeric().withMessage('username must be alphanumeric'),
+        .isAlphanumeric().withMessage('username must be alphanumeric')
+        .custom( async value => {
+            const rows = await getUserByUsername(value)
+            const user = rows[0]
+            if(user) {
+                throw new Error('E-mail already in use');
+            }
+            return true
+        }).withMessage('this username is already taken'),
     body('password')
         .trim()
         .notEmpty().withMessage('password is not empty')
@@ -41,14 +49,12 @@ function displaySignUpPage(req, res, next) {
 
 async function signUpController(req, res, next) {
     const errors = validationResult(req)
-    console.log('errors:', errors)
     if (!errors.isEmpty()) {
         res.render('signUpPage', {errors: errors.errors})
         return
     }
     const { firstname, lastname, username, password, confirmPassword } = matchedData(req);
     const hashPassword = await  bcrypt.hash(password, 10)
-    console.log('hashPassword:', hashPassword)
     await createUser({firstname, lastname, username, hashPassword})
     res.redirect('/login')
 }

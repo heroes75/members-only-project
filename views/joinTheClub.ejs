@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the club</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="container">
+        <% if (locals.currentUser.member) { %>
+            <h3> CONGRATULATION YOU'RE A MEMBER </h3>
+        <% } else { %>
+            <h3>hello <%= locals.currentUser.username %>, do you want join the club ?</h3>
+            <form action="/join" method="post">
+                <strong>@reinyourheart</strong>
+                <%- include('partials/errors', { errors: locals.errors}) %>
+                <div class="input-container">
+                    <label for="joinCode">Enter the code: </label>
+                    <input type="text" name="joinCode" id="joinCode" placeholder="Enter the code">
+                    <button type="submit"> JOIN THE CLUB</button>
+                </div>
+            </form>
+        <%} %>
+        
+    </div>
+</body>
+</html>

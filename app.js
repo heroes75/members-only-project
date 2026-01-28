@@ -9,6 +9,10 @@ const session = require('express-session');
 const pool = require('./config/db/pool');
 const passport = require('passport');
 const logoutRouter = require('./routes/logout-router');
+const joinTheClubRouter = require('./routes/join-the-club-router');
+const createMessageRouter = require('./routes/create-message-router');
+const becomeAdminRouter = require('./routes/become-admin-router');
+const { isAuth, isUnauth } = require('./controllers/authMiddleware');
 const pgSession = require('connect-pg-simple')(session)
 
 const app = express()
@@ -40,9 +44,12 @@ app.use((req, res, next) => {
 })
 
 app.use(indexRouter)
-app.use('/signup', signUpRouter)
-app.use('/login', loginRouter)
+app.use(['/signup', '/register'], isUnauth, signUpRouter)
+app.use('/login', isUnauth, loginRouter)
 app.use('/logout', logoutRouter)
+app.use('/join', isAuth, joinTheClubRouter)
+app.use(['/createmessage', '/postmessage', '/post', '/create'], isAuth, createMessageRouter)
+app.use(['/becomeAdmin', '/admin'], isAuth, becomeAdminRouter)
 
 app.listen(3000, (err) => {
     if (err) console.error(err);

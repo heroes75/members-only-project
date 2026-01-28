@@ -1,0 +1,17 @@
+<header>
+    <nav>
+        <div class="left-side"><a href="/">Home</a></div>
+        <div class="right-side">
+            <% if (locals.currentUser) { %>
+                <a href="/createmessage"> Create a message</a>
+                <a href="/join"> Become a member</a>
+                <a href="/admin">Become an Admin</a>
+                <a href="/logout">Logout</a>
+
+            <% } else { %>
+                <a href="/signup">Sign Up</a>
+                <a href="/login">Sign In</a>
+            <% } %>
+        </div>
+    </nav>
+</header>
