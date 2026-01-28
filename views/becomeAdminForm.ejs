@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles-header.css">
+    <link rel="stylesheet" href="/styles-admin.css">
     <title>Become an Admin</title>
 </head>
 <body>
     <%- include('partials/header') %>
-    <div class="container">
-        <% if (locals.currentUser.admin) { %>
-            <h3>Congratulation you're are a admin</h3>
-        <% } else { %>
-            <h3><%= locals.currentUser.username %>, do you want become an administrator ?</h3>
-            <form action="/becomeAdmin" method="post">
-                <%- include('partials/errors', {errors: locals.errors}) %>
-                <div class="hint"><strong><i>I see the NU-EVO</i></strong></div>
-                <label for="adminCode">
-                    Enter the code
-                    <input type="text" name="adminCode" id="adminCode">
-                </label>
-                <button type="submit">I want become an admin</button>
-            </form>
-        <%} %>
-    </div>
+    <main>
+        <div class="container">
+            <% if (locals.currentUser.admin) { %>
+                <h3>Congratulation you're are a admin</h3>
+            <% } else { %>
+                <h3><%= locals.currentUser.username %>, do you want become an administrator ?</h3>
+                <form action="/becomeAdmin" method="post">
+                    <%- include('partials/errors', {errors: locals.errors}) %>
+                    <div class="hint"><strong><i>I see the NU-EVO</i></strong></div>
+                    <label for="adminCode">
+                        Enter the code
+                        <input type="text" name="adminCode" id="adminCode">
+                    </label>
+                    <button type="submit">I want become an admin</button>
+                </form>
+            <%} %>
+        </div>
+    </main>
 </body>
 </html>

@@ -13,7 +13,6 @@ const validJoinTheClubCode = [
 exports.joinTheClubController = [
     validJoinTheClubCode,
     async (req, res) => {
-        console.log('process.env.MEMBERSHIP_CODE:', process.env.MEMBERSHIP_CODE)
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             res.render('joinTheClub', { errors: errors.errors })

@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles-header.css">
+    <link rel="stylesheet" href="/styles-login.css">
     <title>Log In</title>
 </head>
 <body>
     <%- include('partials/header') %>
-    <h1>LOGIN</h1>
-    <form action="/login" method="post">
-        <label for="username">Enter your username</label>
-        <input type="text" name="username" id="username">
-        <label for="password">Enter your password</label>
-        <input type="password" name="password" id="password">
-        <button type="submit">Connect</button>
-    </form>
+    <main>
+        <div class="container">
+            <h1>LOGIN</h1>
+            <form action="/login" method="post">
+                <label for="username">Enter your username</label>
+                <input type="text" name="username" id="username">
+                <label for="password">Enter your password</label>
+                <input type="password" name="password" id="password">
+                <button type="submit">Connect</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

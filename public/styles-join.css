@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    padding: 30px;
+    border: 5px ridge gray;
+}
+
+.container h3 {
+    padding: 10px;
+    font-size: 26px;
+}
+
+form {
+    text-align: center;
+}
+
+
+.hint {
+    font-size: 22px;
+    margin: 7px 0;
+    padding: 10px 0;
+    border: 5px double red;
+    text-decoration: underline;
+}
+
+button {
+    display: block;
+    margin: 15px auto;
+    padding: 7px;
+}
+
+.input-container {
+    margin: 10px;
+    font-size: 20px;
+}

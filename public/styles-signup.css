@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    border: 5px ridge gray;
+}
+
+h1 {
+    align-self: center;
+    margin: 10px 0;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin: 10px 0;
+    /* font-size: 18px; */
+}
+
+button {
+    margin: 15px 0;
+    align-self: center;
+    padding: 15px 25px;
+    font-size: 18px;
+}
+
+form {
+    text-align: center;
+}
