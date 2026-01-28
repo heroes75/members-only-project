@@ -1,0 +1,72 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+main > h2 {
+    margin: 15px 0;
+    background-color: rgba(128, 128, 128, .25);
+    border: 1px gray solid;
+    padding: 20px 30px;
+}
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.message-container {
+    padding: 20px;
+    border: 1px gray solid;
+    margin: 10px 0;
+    background-color: #FFFFFF;
+}
+
+.title {
+    margin: 7px;
+    font-size: 22px;
+}
+
+.text {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.info {
+    color: #555f73;
+}
+
+.username {
+    font-family: cursive;
+}
+
+.member {
+    padding: 5px;
+    border: 1px green solid;
+    border-radius: 10px;
+    color: green;
+    background-color: rgba(0, 128, 0, .2);
+}
+
+.admin {
+    padding: 5px;
+    border: 2px ridge red;
+    border-radius: 10px;
+    color: red;
+    background-color: rgba(255, 0, 0, .17);
+}
+
+button {
+    margin: 7px 0 0 0;
+    padding: 6px;
+}

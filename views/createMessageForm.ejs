@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles-header.css">
+    <link rel="stylesheet" href="/styles-message-form.css">
     <title>Create new message</title>
 </head>
 <body>
     <%- include('partials/header') %>
-    <div class="container">
-        <h2> <%= locals.currentUser.username %> post a new message</h2>
-        <form action="/createmessage" method="post">
-            <div class="title-input">
-                <label for="title">ENTER THE TITLE</label>
-                <input type="text" name="title" id="title">
-            </div>
-            <div class="text-input">
-                <label for="text">ENTER YOUR MESSAGE</label>
-                <textarea name="text" id="text"></textarea>
-            </div>
-            <button type="submit">Post your message</button>
-        </form>
-    </div>
+    <main>
+        <div class="container">
+            <h2> <%= locals.currentUser.username %> post a new message</h2>
+            <form action="/createmessage" method="post">
+                <%- include('partials/errors', {errors: locals.errors}) %>
+                <div class="title-input">
+                    <label for="title">ENTER THE TITLE:</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div class="text-input">
+                    <label for="text">ENTER YOUR MESSAGE:</label>
+                    <textarea cols="50" rows="10" name="text" id="text"></textarea>
+                </div>
+                <button type="submit">Post your message</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

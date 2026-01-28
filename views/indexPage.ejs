@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles-header.css">
     <title>Home</title>
 </head>
 <body>
 <%- include('partials/header') %>
-<% if (locals.currentUser) { %>
-    <h3>Welcome <%= currentUser.firstname + " " + currentUser.lastname %></h3>
-<% } else { %>
-    Welcome
-<%} %>
-    <div class="messages-container">
-        <% if (locals.messages.length === 0) { %>
-            <h3>No message added yet</h3>
-        <% } else {%>
-            <% locals.messages.forEach(messageInfo => { %>
-                <%- include('partials/message', {messageInfo: messageInfo}) %>
-            <% }) %>
-        <%} %> 
-        
-    </div>
+<main>
+    <% if (locals.currentUser) { %>
+        <h2>Welcome <%= currentUser.firstname + " " + currentUser.lastname %>!</h2>
+    <% } else { %>
+        <h2>Welcome</h2>
+    <%} %>
+        <div class="messages-container">
+            <% if (locals.messages.length === 0) { %>
+                <h3>No message added yet</h3>
+            <% } else {%>
+                <% for( const messageInfo of locals.messages) { %>
+                    <%- include('partials/message', {messageInfo: messageInfo}) %>
+                <% } %>
+            <%} %>
+        </div>
+</main>
 </body>
 </html>
