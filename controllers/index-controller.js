@@ -1,10 +1,10 @@
-const { getAllMessages } = require("../config/db/queries")
+const { getAllMessages } = require("../config/db/queries");
 
-async function indexControllers(req, res, next) {
-    const result = await getAllMessages()
-    res.render('indexPage', { messages: result})
+async function indexControllers(req, res) {
+    const result = await getAllMessages();
+    res.render("indexPage", { messages: result });
 }
 
 module.exports = {
-    indexControllers
-}
+    indexControllers,
+};

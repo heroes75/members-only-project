@@ -1,5 +1,5 @@
-const { Client } = require('pg');
-const { argv } = require('process');
+const { Client } = require("pg");
+const { argv } = require("process");
 
 const SQL = `
     CREATE TABLE IF NOT EXISTS users
@@ -21,19 +21,18 @@ const SQL = `
         added TIMESTAMP,
         authorId INTEGER REFERENCES users (id)
     );
-`
+`;
 
 const client = new Client({
-    connectionString: argv[2]
-})
+    connectionString: argv[2],
+});
 
 async function main() {
-    console.log('start seeding...');
-    await client.connect()
-    await client.query(SQL)
-    await client.end()
-    console.log('end seeding');
-    
+    console.log("start seeding...");
+    await client.connect();
+    await client.query(SQL);
+    await client.end();
+    console.log("end seeding");
 }
 
 main();

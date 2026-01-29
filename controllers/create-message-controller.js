@@ -14,9 +14,7 @@ const validMessage = [
         .withMessage(`title ${notEmpty}`)
         .isLength({ max: 69 })
         .withMessage("title don't overflow 69 characters"),
-    body("text")
-        .trim()
-        .notEmpty().withMessage(`your message ${notEmpty}`),
+    body("text").trim().notEmpty().withMessage(`your message ${notEmpty}`),
 ];
 
 exports.createMessageController = [
@@ -24,25 +22,25 @@ exports.createMessageController = [
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.render('createMessageForm', {errors: errors.errors})
-            return
+            res.render("createMessageForm", { errors: errors.errors });
+            return;
         }
-        const {title, text} = matchedData(req);
-        await insertNewMessage({title, text}, req.user.id)
-        res.redirect('/')
+        const { title, text } = matchedData(req);
+        await insertNewMessage({ title, text }, req.user.id);
+        res.redirect("/");
     },
 ];
 
 exports.deleteMessageController = async (req, res) => {
     const id = +req.params?.id;
     if (!id) {
-        res.status(404).send('<h1>page not found</h1>')
+        res.status(404).send("<h1>page not found</h1>");
     }
 
-    if(!req.user.admin) {
-        res.status(401).send('<h1>Unauthorized</h1>')
+    if (!req.user.admin) {
+        res.status(401).send("<h1>Unauthorized</h1>");
     }
 
-    await deleteMessage(id)
-    res.redirect('/')
-}
+    await deleteMessage(id);
+    res.redirect("/");
+};

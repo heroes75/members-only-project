@@ -1,8 +1,8 @@
-const { indexControllers} = require('../controllers/index-controller')
-const {Router} = require('express')
+const { indexControllers } = require("../controllers/index-controller");
+const { Router } = require("express");
 
 const indexRouter = Router();
 
-indexRouter.get('/', indexControllers)
+indexRouter.get("/", indexControllers);
 
-module.exports =indexRouter
+module.exports = indexRouter;
